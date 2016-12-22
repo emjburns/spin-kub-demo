@@ -5,11 +5,11 @@ node('umaas_build_slave') {
           usernameVariable: 'SERVICE_USERNAME', passwordVariable: 'SERVICE_PASSWORD']]) {
       stage ('Stage Checkout')
            checkout([$class: 'GitSCM',
-                     branches: [[name: '*/develop']],
+                     branches: [[name: '*/master']],
                      doGenerateSubmoduleConfigurations: false,
                      extensions: [],
                      submoduleCfg: [],
-                     userRemoteConfigs: [[credentialsId: 'ads.cicd.account', url: 'https://stash.veritas.com/scm/surf/spin-kub-demo.git']]])
+                     userRemoteConfigs: [[credentialsId: 'surf-service-account', url: 'https://stash.veritas.com/scm/surf/spin-kub-demo.git']]])
 
       stage ('Build')
        //  build in docker image
